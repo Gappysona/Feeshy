@@ -4,6 +4,8 @@ const bot = new Discord.Client();
 const newUsers = new Discord.Collection();
 
 const ImageUploaderLogic = require("./ImageUploaderLogic.js");
+const ReactRole = require("./ReactRole.js");
+
 
 bot.login('NjYyMDk1NTYyNTM5MTM5MDg0.Xg0_Nw.MfDanQ5wY0cw3NqZE6qv9kXbBew');
 
@@ -13,9 +15,13 @@ bot.on('ready', () => {
   });
 
 bot.on('message', (message) => {
-if(message.content.includes ("Feesh") || message.content.includes ("feesh")){
-    message.react('❤');
+if(message.content.includes ("Feesh") || message.content.includes ("feesh") || message.content.includes ("FEESH")){
+const vapgasm = message.client.emojis.find(emoji => emoji.name === "oseVaporeonABlush");
+   // message.channel.send(`${vapgasm}`);
+  // message.react('❤');
+  message.react("oseVaporeonABlush:650493625767165972");
 }
+
 });
 
         bot.on("guildMemberAdd", (member) => {
