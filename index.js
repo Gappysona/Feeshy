@@ -14,7 +14,7 @@ bot.on('ready', () => {
 
 bot.on('message', (message) => {
 if(message.content.includes ("Feesh") || message.content.includes ("feesh")){
-    message.channel.react('❤');
+    message.react('❤');
 }
 });
 
