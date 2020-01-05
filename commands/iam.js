@@ -26,30 +26,42 @@ exports.run = async (client, message, args) => {
     '663106677045985316'  //under18
     ]
 
-    const role = message.guild.roles.find(r => r.name === `${args[0]}`);
+    //POKEMON TYPE ROLES
+    const role = message.guild.roles.find(r => r.name === `${args.join(' ')}`);
     //console.log(`args[0]=${args[0]}, role=${role}`)
-    if (!role) return message.channel.send(`I couldn't find a role named **${args[0]}**, are you sure you spelled it correctly? Roles are case-sensitive!`).then(m => m.delete(10000));
+    if (!role) return message.channel.send(`I couldn't find a role named **${args.join(' ')}**, are you sure you spelled it correctly? Roles are case-sensitive!`).then(m => m.delete(10000));
     if (typeRoles.includes(role.id)) {
       if (!message.member.roles.has(role.id)) {
           message.member.addRole(role).catch(console.error);
-          message.channel.send(`Done~! You now have **${args[0]}**.`)
+          message.channel.send(`Done~! You now have **${args.join(' ')}**.`)
       } else {
           message.member.removeRole(role).catch(console.error);
-          message.channel.send(`Done~! You no longer have **${args[0]}**.`)
+          message.channel.send(`Done~! You no longer have **${args.join(' ')}**.`)
           return;
         };
     };
 
+    //AGE ROLES
     if (ageRoles.includes(role.id)) {
       if (message.member.roles.has('663106616295424050'||'663106677045985316')) {
         message.channel.send(`You cannot change your age role, contact a moderator!`)
 
       } else {
         message.member.addRole(role).catch(console.error);
-        message.channel.send(`You have been marked as **${args[0]}**! You can no longer change this, ask a moderator if you have made a mistake.`)
+        message.channel.send(`You have been marked as **${args.join(' ')}**! You can no longer change this, ask a moderator if you have made a mistake.`)
         return;
         };
     };
+
+    //NEWSLETTER ROLE
+    if (!message.member.roles.has('658759457928511488')) {
+      message.member.addRole(role).catch(console.error);
+      message.channel.send(`Done~! You now have **${args.join(' ')}**.`)
+    } else {
+      message.member.removeRole(role).catch(console.error);
+      message.channel.send(`Done~! You no longer have **${args.join(' ')}**.`)
+      return;
+      };
 
 };
   exports.conf = {

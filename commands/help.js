@@ -8,15 +8,15 @@ exports.run = async (client, message) => {
     .setAuthor(`Commands List`,message.author.avatarURL)
     .addField(`**${prefix}HELP**`,`See the commands list.`)
     .addField(`**${prefix}PING**`,`Check the bot ping.`)
-    .addField(`**${prefix}SUGGEST**`,`Add a suggestion, either for the bot or the server.`)
-    .addField(`**${prefix}ROLE**`,`Assign a role to yourself.\n**ALIAS:** ${prefix}iam`)
+    .addField(`**${prefix}SUGGEST <message>**`,`Add a suggestion, either for the bot or the server.`)
+    .addField(`**${prefix}IAM <role>**`,`Assign a role to yourself.`)
     .setTimestamp()
     .setColor('2F3136')
     .setThumbnail()
     .setFooter(`Requested by ${message.author.username}`)
     // Grab the ID of the user and then send them the message
     if(users.includes(message.author.id)) {
-      embed.addField(`**${prefix}SAY**`,`Make me speak!`,true)
+      embed.addField(`**${prefix}SAY <message>**`,`Make me speak, Karma!`,true)
       message.channel.send(embed)
     } else {
     message.channel.send(embed)
