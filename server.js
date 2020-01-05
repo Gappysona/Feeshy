@@ -9,7 +9,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 //Define Config
-const token = ('NjYzMDM3NjEwMDY2ODM3NTA0.XhCuSA.Igfoz4LKlhQYWsLSyWr-8ILgnTE');
+const token = ('');
 app.get("/", (request, response) => {
   console.log(Date.now() + " Ping Received");
   response.sendStatus(200);
