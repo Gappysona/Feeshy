@@ -38,8 +38,10 @@ exports.run = async (client, message, args) => {
           message.member.removeRole(role).catch(console.error);
           message.channel.send(`Done~! You no longer have **${args.join(' ')}**.`)
           return;
-        };
-    };
+        }
+    } else {
+      message.channel.send(`Eheheh... I can't give you that role...`)
+    }
 
     //AGE ROLES
     if (ageRoles.includes(role.id)) {
@@ -54,20 +56,22 @@ exports.run = async (client, message, args) => {
     };
 
     //NEWSLETTER ROLE
-    if (!message.member.roles.has('658759457928511488')) {
-      message.member.addRole(role).catch(console.error);
-      message.channel.send(`Done~! You now have **${args.join(' ')}**.`)
-    } else {
-      message.member.removeRole(role).catch(console.error);
-      message.channel.send(`Done~! You no longer have **${args.join(' ')}**.`)
-      return;
-      };
+    if (role.id == '658759457928511488') {
+      if (!message.member.roles.has('658759457928511488')) {
+        message.member.addRole('658759457928511488').catch(console.error);
+        message.channel.send(`Done~! You now have **${args.join(' ')}**.`)
+      } else if (message.member.roles.has('658759457928511488')) {
+        message.member.removeRole('658759457928511488').catch(console.error);
+        message.channel.send(`Done~! You no longer have **${args.join(' ')}**.`)
+        return;
+        };
+    };
 
 };
   exports.conf = {
     enabled: true, 
     guildOnly: false,
-    aliases: []
+    aliases: ['im', 'role']
   };
   exports.help = {
     name: 'iam',
