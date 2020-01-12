@@ -9,7 +9,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 //Define Config
-const token = ('NjYyMDk1NTYyNTM5MTM5MDg0.XhMf2g.9w_o07PZ48YH3xStekuH4S-oy5w');
+const token = ('');
 app.get("/", (request, response) => {
   console.log(Date.now() + " Ping Received");
   response.sendStatus(200);
@@ -52,6 +52,8 @@ fs.readdir('./events/', (err, files) => {
     client.on(eventName, (...args) => eventFunction.run(client, ...args));
   });
 });
+
+//FEESH REACTIONING
 
 var fEmoji = [
 ':oseVaporeonKarmaGamer:646845564167913486',

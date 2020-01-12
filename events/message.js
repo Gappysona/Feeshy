@@ -1,5 +1,5 @@
 exports.run = async (client, message) => {
-  const prefix = ('.');
+  const prefix = ('fsh.');
   let command = message.content.split(' ')[0].slice(prefix.length);
   let args = message.content.split(' ').slice(1);
   
